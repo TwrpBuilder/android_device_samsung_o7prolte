@@ -1,2 +1,0 @@
-add_lunch_combo omni_o7prolte-eng
-add_lunch_combo omni_o7prolte-userdebug

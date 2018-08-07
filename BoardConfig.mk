@@ -16,12 +16,6 @@
 
 LOCAL_PATH := device/samsung/o7prolte/
 
-FORCE_32_BIT := true
-
-# Bootloader
-BOARD_PROVIDES_BOOTLOADER_MESSAGE := false
-TARGET_BOOTLOADER_BOARD_NAME := MSM8916
-
 # Platform
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
@@ -37,11 +31,14 @@ TARGET_CPU_VARIANT := cortex-a53
 TARGET_CPU_CORTEX_A53 := true
 
 # Kernel
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive buildvariant=userdebug
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F
+BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive buildvariant=userdebug
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(LOCAL_PATH)/dt.img
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS += --dt $(LOCAL_PATH)/prebuilt/dt.img
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 
 # File system
@@ -71,9 +68,6 @@ TW_NEW_ION_HEAP := true
 TW_TARGET_USES_QCOM_BSP := false
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_NTFS_3G := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-BOARD_GLOBAL_CFLAGS += -DTW_USE_MINUI_CUSTOM_FONTS
-#BOARD_HAS_NO_REAL_SDCARD := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_RECOVERY_SWIPE := true

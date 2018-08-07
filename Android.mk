@@ -14,9 +14,8 @@
 # limitations under the License.
 #
 
-ifneq ($(filter o7prolte,$(TARGET_DEVICE)),)
+LOCAL_PATH := device/samsung/o7prolte/
 
-	LOCAL_PATH := device/samsung/o7prolte/
-	include $(call all-makefiles-under,$(LOCAL_PATH))
-	
+ifneq ($(filter o7prolte,$(TARGET_DEVICE)),)
+	include $(call all-makefiles-under,$(LOCAL_PATH))	
 endif
